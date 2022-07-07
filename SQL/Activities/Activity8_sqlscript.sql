@@ -1,0 +1,20 @@
+REM   Script: Activity8
+REM   Activity8
+
+SELECT CUSTOMER_ID, MAX(PURCHASE_AMOUNT) AS "highest purchase amount" 
+FROM orders 
+GROUP BY CUSTOMER_ID 
+ORDER BY "highest purchase amount" DESC;
+
+SELECT DISTINCT SALESMAN_ID, ORDER_DATE, MAX(PURCHASE_AMOUNT) AS "highest purchase amount" 
+FROM orders 
+WHERE ORDER_DATE=To_DATE('2012/08/17', 'YYYY/MM/DD') 
+GROUP BY SALESMAN_ID, ORDER_DATE 
+ORDER BY "highest purchase amount" DESC;
+
+SELECT CUSTOMER_ID, ORDER_DATE, MAX(PURCHASE_AMOUNT) AS "highest purchase amount" 
+FROM orders 
+GROUP BY CUSTOMER_ID, ORDER_DATE 
+HAVING MAX(PURCHASE_AMOUNT)  IN(2030, 3450, 5760, 6000) 
+ORDER BY "highest purchase amount" DESC;
+
